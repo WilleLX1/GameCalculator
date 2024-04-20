@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameCheatApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f23d6c5f19323372dd3ecff734cb75e91685556")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameCheatApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameCheatApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

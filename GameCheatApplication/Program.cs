@@ -6,29 +6,94 @@ class Program
 {
     static void Main()
     {
-        // Input if you want to play as the guesser or the opponent
-        Console.Write("Do you want to play as the guesser (G) or the opponent (O)? ");
-        string playerRole = Console.ReadLine();
-
-        // Validate the input
-        if (playerRole != "G" && playerRole != "O")
+        string playerRole = "";
+        while (true)
         {
-            Console.WriteLine("Invalid input! Please enter 'G' to play as the guesser or 'O' to play as the opponent.");
-            return;
+            // Input if you want to play as the guesser or the opponent
+            Console.Write("Do you want to play as the guesser (G) or the opponent (O)? ");
+            playerRole = Console.ReadLine();
+
+            // Validate the input
+            if (playerRole != "G" && playerRole != "O")
+            {
+                Console.WriteLine("Invalid input! Please enter 'G' to play as the guesser or 'O' to play as the opponent.");
+                continue;
+            }
+
+            break;
         }
 
         if (playerRole == "G")
         {
-            string DebugSecret = "9536";
+            bool useDebug = false;
+            while (true)
+            {
+                // Ask if the user wants to use a debug secret number
+                Console.Write("Do you want to use a debug secret number (Y/N)? ");
+                string useDebugSecret = Console.ReadLine();
+
+                // Validate the input
+                if (useDebugSecret != "Y" && useDebugSecret != "N")
+                {
+                    Console.WriteLine("Invalid input! Please enter 'Y' or 'N'.");
+                    continue;
+                }
+
+                useDebug = useDebugSecret == "Y";
+                break;
+            }
+
+            string DebugSecret = "";
+            if (useDebug)
+            {
+                while (true)
+                {
+                    // Ask the user to enter the debug secret number
+                    Console.Write("Enter the debug secret number: ");
+                    DebugSecret = Console.ReadLine();
+
+                    // Validate the input
+                    if (DebugSecret.Length != 4 || !IsNumber(DebugSecret) || !IsDifferent(DebugSecret))
+                    {
+                        Console.WriteLine("Invalid input! Please enter a 4-digit number with different digits.");
+                        continue;
+                    }
+
+                    Console.WriteLine("Debug secret number is set to: " + DebugSecret);
+                    break;
+                }
+            }
             // Secret is now hidden and unknown. We need to guess until there is only one possibility left
             List<string> possibilities = GeneratePossibilities();
             string nextGuess = possibilities[0]; // Initialize the first guess
-            Console.WriteLine(nextGuess);
+            Console.WriteLine("First guess: " + nextGuess);
+
+            // Initialize the amount of guesses
+            int amountGuesses = 1;
 
             while (possibilities.Count > 1)
             {
-                Console.Write($"Enter the response (e.g., {GenerateResponce(nextGuess, DebugSecret)}): ");
-                string response = Console.ReadLine();
+                string response = "";
+                while (true)
+                {
+                    if (useDebug)
+                    {
+                        Console.Write($"Enter the response (e.g., {GenerateResponce(nextGuess, DebugSecret)}): ");
+                    }
+                    else
+                    {
+                        Console.Write("Enter the response: ");
+                    }
+                    response = Console.ReadLine();
+
+                    // Validate the response format
+                    if (!IsValidResponse(response))
+                    {
+                        Console.WriteLine("Invalid response format! Please enter a response in the format 'NRNW'.");
+                        continue;
+                    }
+                    break;
+                }
 
                 List<string> numbersToRemove = new List<string>();
                 foreach (string number in possibilities)
@@ -64,22 +129,32 @@ class Program
                 }
 
                 nextGuess = possibilities[0];
-                Console.WriteLine(nextGuess);
+                // Get the percentage of the game done
+                double percentageDone = Math.Round((1 - (double)possibilities.Count / 5040) * 100, 2);
+                Console.WriteLine($"Guess: {nextGuess} ({percentageDone}% done, {possibilities.Count} left)");
+                // Increment the amount of guesses
+                amountGuesses++;
             }
             // The last remaining possibility is the secret number
-            Console.WriteLine("The secret number is: " + possibilities[0]);
+            Console.WriteLine($"The secret number is: {possibilities[0]} (Only took {amountGuesses} guesses!)");
         }
         else
         {   
-            // Input the opponent's secret number
-            Console.Write("Enter your secret number: ");
-            string secretNumber = Console.ReadLine();
-
-            // Check if the input is a number with 4 different digits
-            if (secretNumber.Length != 4 || !IsNumber(secretNumber) || !IsDifferent(secretNumber))
+            string secretNumber = "";
+            while (true)
             {
-                Console.WriteLine("Invalid input! Please enter a 4-digit number with different digits.");
-                return;
+                // Input the opponent's secret number
+                Console.Write("Enter your secret number: ");
+                secretNumber = Console.ReadLine();
+
+                // Check if the input is a number with 4 different digits
+                if (secretNumber.Length != 4 || !IsNumber(secretNumber) || !IsDifferent(secretNumber))
+                {
+                    Console.WriteLine("Invalid input! Please enter a 4-digit number with different digits.");
+                    continue;
+                }
+
+                break;
             }
 
             // Initialize the pool of possibilities (all 4-digit numbers with different digits)
@@ -90,6 +165,9 @@ class Program
             string nextGuess = possibilities[0]; // Initialize the first guess
 
             Console.WriteLine("My first guess is: " + nextGuess);
+
+            // Initialize the amount of guesses
+            int amountGuesses = 1;
 
             // Repeat the process until the secret number is guessed
             while (true)
@@ -147,7 +225,7 @@ class Program
                 // Check if the correct number is guessed
                 if (response == "4R0W")
                 {
-                    Console.WriteLine("Congratulations! I guessed your number: " + nextGuess);
+                    Console.WriteLine($"Congratulations! I guessed your number in only {amountGuesses} guesses: " + nextGuess);
                     break; // Exit the loop if the correct number is guessed
                 }
 
@@ -160,6 +238,8 @@ class Program
                 }
 
                 Console.WriteLine("My next guess is: " + nextGuess);
+                // Increment the amount of guesses
+                amountGuesses++;
             }
         }
 
