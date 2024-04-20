@@ -1,0 +1,14 @@
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\bin\Debug\net8.0\GameCheatApplication.exe
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\bin\Debug\net8.0\GameCheatApplication.deps.json
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\bin\Debug\net8.0\GameCheatApplication.runtimeconfig.json
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\bin\Debug\net8.0\GameCheatApplication.dll
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\bin\Debug\net8.0\GameCheatApplication.pdb
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\GameCheatApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\GameCheatApplication.AssemblyInfoInputs.cache
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\GameCheatApplication.AssemblyInfo.cs
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\GameCheatApplication.csproj.CoreCompileInputs.cache
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\GameCheatApplication.dll
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\refint\GameCheatApplication.dll
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\GameCheatApplication.pdb
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\GameCheatApplication.genruntimeconfig.cache
+C:\Github-Stuff\C#\GameCheatApplication\GameCheatApplication\obj\Debug\net8.0\ref\GameCheatApplication.dll
